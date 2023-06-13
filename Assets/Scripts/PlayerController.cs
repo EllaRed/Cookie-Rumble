@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private float speed=10f;
     [SerializeField]
     private float xBounds=12f;
+    public GameObject foodProjectile;
     void Start()
     {
         
@@ -29,6 +30,10 @@ public class PlayerController : MonoBehaviour
         horizontalInput= Input.GetAxis("Horizontal");
         transform.Translate(horizontalInput*Time.deltaTime*speed* Vector3.right);
         
+        if ( Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(foodProjectile,transform.position,foodProjectile.transform.rotation);
+        }
         
     }
 }
